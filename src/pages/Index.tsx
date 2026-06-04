@@ -167,12 +167,14 @@ export default function Index() {
           <div className="flex-1 flex items-center justify-center opacity-0 animate-rise rise-delay-3">
             <div className="relative">
               <div className="absolute inset-0 fire-glow scale-105 blur-2xl opacity-40" />
-              <img
-                src={SAUCE_IMAGE}
-                alt="Firesauce packet"
-                className="relative z-10 w-80 lg:w-[420px] object-contain animate-float"
-                style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)" }}
-              />
+              <div className="relative z-10 overflow-hidden animate-float" style={{ width: "min(320px, 90vw)" }}>
+                <img
+                  src={SAUCE_IMAGE}
+                  alt="Firesauce packet"
+                  className="w-full object-contain"
+                  style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)", marginRight: "-8%" }}
+                />
+              </div>
               <div className="absolute -top-4 -right-4 z-20 fire-gradient rounded-2xl px-4 py-2 shadow-xl">
                 <span className="font-display text-white text-xl tracking-widest">NEW!</span>
               </div>

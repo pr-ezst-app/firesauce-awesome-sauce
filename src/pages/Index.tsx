@@ -59,7 +59,7 @@ export default function Index() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
         style={{ background: "linear-gradient(to bottom, rgba(15,10,0,0.95) 0%, transparent 100%)" }}>
         <div className="flex items-center gap-2">
-          <img src={LOGO_IMAGE} alt="Firesauce Logo" className="h-12 object-contain" style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)" }} />
+          <img src={LOGO_IMAGE} alt="Firesauce Logo" className="h-12 object-contain" style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)", clipPath: "inset(0 8% 0 0)" }} />
         </div>
 
         <div className="hidden md:flex items-center gap-8">
@@ -443,7 +443,7 @@ export default function Index() {
       <footer className="border-t border-white/10 py-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <img src={LOGO_IMAGE} alt="Firesauce" className="h-12 object-contain" style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)" }} />
+            <img src={LOGO_IMAGE} alt="Firesauce" className="h-12 object-contain" style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)", clipPath: "inset(0 8% 0 0)" }} />
           </div>
           <p className="text-white/30 text-sm text-center">
             © 2026 Firesauce. Ignite every bite.

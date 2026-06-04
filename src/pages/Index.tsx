@@ -211,7 +211,7 @@ export default function Index() {
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-3xl" style={{ background: p.color }} />
               {p.tag && (
-                <div className="absolute -top-3 left-6 text-white text-xs font-bold px-3 py-1 rounded-full tracking-widest" style={{ background: p.color }}>
+                <div className="inline-block text-white text-xs font-bold px-3 py-1 rounded-full tracking-widest mb-3" style={{ background: p.color }}>
                   {p.tag}
                 </div>
               )}

@@ -170,8 +170,8 @@ export default function Index() {
               <img
                 src={SAUCE_IMAGE}
                 alt="Firesauce packet"
-                className="relative z-10 w-80 lg:w-[420px] object-contain animate-float"
-                style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)" }}
+                className="relative z-10 w-80 lg:w-[420px] object-cover object-left-top animate-float"
+                style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)", aspectRatio: "1/1" }}
               />
               <div className="absolute -top-4 -right-4 z-20 fire-gradient rounded-2xl px-4 py-2 shadow-xl">
                 <span className="font-display text-white text-xl tracking-widest">NEW!</span>

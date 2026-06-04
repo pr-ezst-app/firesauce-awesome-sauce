@@ -243,9 +243,7 @@ export default function Index() {
             <p className="text-white/60 mt-6 text-lg leading-relaxed max-w-lg">
               Firesauce was created for people who refuse to settle for bland. We took the convenience of a dip packet and filled it with something revolutionary — a sauce so good, you'll keep a stash everywhere.
             </p>
-            <p className="text-white/60 mt-4 text-lg leading-relaxed max-w-lg">
-              Like Heinz's iconic dip & squeeze but with fire in its soul. Easy to squeeze, easy to dip in — and impossible to forget.
-            </p>
+
 
             <div className="mt-10 grid grid-cols-2 gap-6">
               {[

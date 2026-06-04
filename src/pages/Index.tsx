@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
-const SAUCE_IMAGE = "https://cdn.ezst.app/projects/46f74984-a90d-4f33-b66e-4b399623c68b/files/b66d8caa-2493-4135-a72f-604433b63c42.jpg";
-const LOGO_IMAGE = "https://cdn.ezst.app/projects/46f74984-a90d-4f33-b66e-4b399623c68b/files/01377e74-1264-46ae-994a-9681dd170a58.jpg";
+const SAUCE_IMAGE = "https://cdn.ezst.app/projects/46f74984-a90d-4f33-b66e-4b399623c68b/bucket/f6497fe0-53d6-425a-b78f-9645402e3229.png";
+const LOGO_IMAGE = "https://cdn.ezst.app/projects/46f74984-a90d-4f33-b66e-4b399623c68b/bucket/f6497fe0-53d6-425a-b78f-9645402e3229.png";
 
 const products = [
   {
@@ -59,8 +59,7 @@ export default function Index() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
         style={{ background: "linear-gradient(to bottom, rgba(15,10,0,0.95) 0%, transparent 100%)" }}>
         <div className="flex items-center gap-2">
-          <img src={LOGO_IMAGE} alt="Firesauce Logo" className="h-10 w-10 rounded-full object-cover" />
-          <span className="font-display text-2xl tracking-widest fire-gradient-text">FIRESAUCE</span>
+          <img src={LOGO_IMAGE} alt="Firesauce Logo" className="h-10 object-contain" />
         </div>
 
         <div className="hidden md:flex items-center gap-8">
@@ -444,8 +443,7 @@ export default function Index() {
       <footer className="border-t border-white/10 py-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <img src={LOGO_IMAGE} alt="Firesauce" className="h-8 w-8 rounded-full object-cover" />
-            <span className="font-display text-xl tracking-widest fire-gradient-text">FIRESAUCE</span>
+            <img src={LOGO_IMAGE} alt="Firesauce" className="h-10 object-contain" />
           </div>
           <p className="text-white/30 text-sm text-center">
             © 2026 Firesauce. Ignite every bite.

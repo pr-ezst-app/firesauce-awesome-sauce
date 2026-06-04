@@ -2,35 +2,40 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 const SAUCE_IMAGE = "https://cdn.ezst.app/projects/46f74984-a90d-4f33-b66e-4b399623c68b/files/b66d8caa-2493-4135-a72f-604433b63c42.jpg";
+const LOGO_IMAGE = "https://cdn.ezst.app/projects/46f74984-a90d-4f33-b66e-4b399623c68b/files/01377e74-1264-46ae-994a-9681dd170a58.jpg";
 
 const products = [
   {
-    name: "Original Fire",
-    heat: "🔥🔥🔥",
-    desc: "The classic that started it all. Bold tomato base with a slow-building heat.",
+    name: "Sweet & Sour",
+    emoji: "🍋",
+    desc: "Tangy citrus zing with a sugary finish. The crowd-pleaser that works on everything.",
     price: "$4.99",
     tag: "BEST SELLER",
+    color: "#FFB800",
   },
   {
-    name: "Inferno Habanero",
-    heat: "🔥🔥🔥🔥🔥",
-    desc: "Not for the faint of heart. Pure habanero fury in every squeeze.",
-    price: "$5.49",
-    tag: "NEW",
-  },
-  {
-    name: "Smoky Ember",
-    heat: "🔥🔥",
-    desc: "Chipotle-smoked sweetness with a gentle afterburn. Perfect for dipping.",
+    name: "BBQ",
+    emoji: "🍖",
+    desc: "Smoky, rich, slow-cooked BBQ flavor packed into every squeeze.",
     price: "$4.99",
-    tag: null,
+    tag: "NEW",
+    color: "#8B2500",
   },
   {
     name: "Honey Blaze",
-    heat: "🔥",
-    desc: "Sweet wildflower honey meets a whisper of cayenne. Universally loved.",
-    price: "$5.29",
+    emoji: "🍯",
+    desc: "Sweet wildflower honey with a warm cayenne kick. Universally loved.",
+    price: "$4.99",
     tag: "FAN FAVORITE",
+    color: "#FF6B1A",
+  },
+  {
+    name: "Ketchup",
+    emoji: "🍅",
+    desc: "The classic reinvented. Our premium tomato ketchup in a revolutionary packet.",
+    price: "$3.99",
+    tag: null,
+    color: "#E8210A",
   },
 ];
 
@@ -39,6 +44,8 @@ const navLinks = ["Home", "Products", "About", "Shop"];
 export default function Index() {
   const [activeNav, setActiveNav] = useState("Home");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [form, setForm] = useState({ company: "", email: "", phone: "", size: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -52,7 +59,7 @@ export default function Index() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
         style={{ background: "linear-gradient(to bottom, rgba(15,10,0,0.95) 0%, transparent 100%)" }}>
         <div className="flex items-center gap-2">
-          <span className="text-3xl leading-none animate-flicker">🔥</span>
+          <img src={LOGO_IMAGE} alt="Firesauce Logo" className="h-10 w-10 rounded-full object-cover" />
           <span className="font-display text-2xl tracking-widest fire-gradient-text">FIRESAUCE</span>
         </div>
 
@@ -198,24 +205,24 @@ export default function Index() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((p, i) => (
+          {products.map((p) => (
             <div
               key={p.name}
-              className="group relative bg-white/5 border border-white/10 rounded-3xl p-6 hover:border-[#FF6B1A]/50 transition-all duration-300 hover:bg-white/8 cursor-pointer"
+              className="group relative bg-white/5 border border-white/10 rounded-3xl p-6 hover:border-[#FF6B1A]/50 transition-all duration-300 cursor-pointer overflow-hidden"
             >
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-3xl" style={{ background: p.color }} />
               {p.tag && (
-                <div className="absolute -top-3 left-6 fire-gradient text-white text-xs font-bold px-3 py-1 rounded-full tracking-widest">
+                <div className="absolute -top-3 left-6 text-white text-xs font-bold px-3 py-1 rounded-full tracking-widest" style={{ background: p.color }}>
                   {p.tag}
                 </div>
               )}
-              <div className="text-4xl mb-4 group-hover:animate-flicker">🔥</div>
-              <div className="text-lg mb-1">{p.heat}</div>
+              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{p.emoji}</div>
               <h3 className="font-display text-2xl text-white tracking-wider mt-2">{p.name}</h3>
               <p className="text-white/50 text-sm mt-2 leading-relaxed">{p.desc}</p>
               <div className="mt-6 flex items-center justify-between">
-                <span className="font-display text-2xl fire-gradient-text">{p.price}</span>
-                <button className="fire-gradient text-white text-sm font-semibold px-4 py-2 rounded-full hover:opacity-90 transition-opacity">
-                  Add to Cart
+                <span className="font-display text-2xl" style={{ color: p.color }}>{p.price}</span>
+                <button className="text-white text-sm font-semibold px-4 py-2 rounded-full hover:opacity-90 transition-opacity" style={{ background: p.color }}>
+                  Order
                 </button>
               </div>
             </div>
@@ -284,56 +291,152 @@ export default function Index() {
         </div>
       </section>
 
-      {/* SHOP */}
-      <section id="shop" className="py-28 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-[#FF6B1A] text-sm font-medium tracking-widest uppercase">Get Some</span>
-          <h2 className="font-display text-[clamp(3rem,9vw,7rem)] text-white mt-2 tracking-wider leading-none">
-            STOCK UP<br />
-            <span className="fire-gradient-text">ON FIRE.</span>
-          </h2>
-          <p className="text-white/50 mt-5 text-lg max-w-xl mx-auto">
-            Packs, bundles, subscriptions — never run out of heat again.
-          </p>
+      {/* SHOP — B2B */}
+      <section id="shop" className="py-28 px-6 relative overflow-hidden">
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(232,33,10,0.12) 0%, transparent 60%)" }} />
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-[#FF6B1A] text-sm font-medium tracking-widest uppercase">For Business</span>
+            <h2 className="font-display text-[clamp(3rem,9vw,7rem)] text-white mt-2 tracking-wider leading-none">
+              BULK UP<br />
+              <span className="fire-gradient-text">YOUR BRAND.</span>
+            </h2>
+            <p className="text-white/50 mt-5 text-lg max-w-xl mx-auto">
+              From restaurants to stadiums — Firesauce is built for scale. Order by the case or get a custom quote.
+            </p>
+          </div>
 
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Case packs */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
             {[
-              { name: "Starter Pack", qty: "10 packets", price: "$8.99", popular: false, flavors: "1 flavor" },
-              { name: "Fire Bundle", qty: "40 packets", price: "$29.99", popular: true, flavors: "All 4 flavors" },
-              { name: "Inferno Box", qty: "100 packets", price: "$59.99", popular: false, flavors: "Your choice" },
+              { name: "Standard Case", qty: "100 packets", label: "Great for restaurants & cafes", popular: false, icon: "Package" },
+              { name: "Business Case", qty: "500 packets", label: "Perfect for chains & events", popular: true, icon: "Boxes" },
+              { name: "Enterprise Case", qty: "1,000 packets", label: "Stadiums, airlines, large venues", popular: false, icon: "Building2" },
             ].map((pkg) => (
               <div
                 key={pkg.name}
                 className={`relative rounded-3xl p-8 border transition-all duration-300 cursor-pointer ${
                   pkg.popular
-                    ? "fire-gradient border-transparent fire-glow scale-105"
-                    : "bg-white/5 border-white/10 hover:border-[#FF6B1A]/50"
+                    ? "fire-gradient border-transparent fire-glow"
+                    : "bg-white/5 border-white/10 hover:border-[#FF6B1A]/40"
                 }`}
               >
                 {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#FFB800] text-black font-bold text-xs px-4 py-1.5 rounded-full tracking-wider">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#FFB800] text-black font-bold text-xs px-4 py-1.5 rounded-full tracking-wider whitespace-nowrap">
                     MOST POPULAR
                   </div>
                 )}
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 ${pkg.popular ? "bg-white/20" : "fire-gradient"}`}>
+                  <Icon name={pkg.icon} size={22} className="text-white" fallback="Package" />
+                </div>
                 <div className="font-display text-3xl text-white tracking-wider">{pkg.name}</div>
-                <div className="mt-2 text-sm text-white/70">{pkg.flavors}</div>
-                <div className="mt-6 font-display text-5xl text-white">{pkg.price}</div>
-                <div className="text-white/60 text-sm mt-1">{pkg.qty}</div>
+                <div className="font-display text-5xl text-white mt-3">{pkg.qty}</div>
+                <div className="text-white/60 text-sm mt-2">{pkg.label}</div>
                 <button
+                  onClick={() => document.getElementById("quote-form")?.scrollIntoView({ behavior: "smooth" })}
                   className={`mt-8 w-full py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-300 ${
                     pkg.popular
                       ? "bg-white text-[#E8210A] hover:bg-white/90"
                       : "border border-[#FF6B1A] text-[#FF6B1A] hover:bg-[#FF6B1A] hover:text-white"
                   }`}
                 >
-                  Add to Cart
+                  Request a Quote
                 </button>
               </div>
             ))}
           </div>
 
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-white/30 text-sm">
-            {["🚚 Free shipping over $25", "🔄 Easy returns", "🌿 All natural ingredients", "⭐ 4.9/5 rating"].map((b) => (
+          {/* Quote form */}
+          <div id="quote-form" className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 max-w-2xl mx-auto">
+            {submitted ? (
+              <div className="text-center py-10">
+                <div className="text-6xl mb-4">🔥</div>
+                <div className="font-display text-4xl fire-gradient-text tracking-wider">WE'RE ON IT!</div>
+                <p className="text-white/50 mt-3">Our team will reach out within 1 business day.</p>
+              </div>
+            ) : (
+              <>
+                <div className="text-center mb-8">
+                  <div className="font-display text-4xl text-white tracking-wider">GET A CUSTOM QUOTE</div>
+                  <p className="text-white/40 text-sm mt-2">Tell us about your business and we'll handle the rest.</p>
+                </div>
+                <form
+                  ref={formRef}
+                  className="space-y-4"
+                  onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+                >
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-white/50 text-xs uppercase tracking-widest mb-1.5 block">Company Name</label>
+                      <input
+                        required
+                        value={form.company}
+                        onChange={(e) => setForm({ ...form, company: e.target.value })}
+                        placeholder="Acme Corp"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-[#FF6B1A] transition-colors text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-white/50 text-xs uppercase tracking-widest mb-1.5 block">Email</label>
+                      <input
+                        required
+                        type="email"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        placeholder="you@company.com"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-[#FF6B1A] transition-colors text-sm"
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-white/50 text-xs uppercase tracking-widest mb-1.5 block">Phone</label>
+                      <input
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        placeholder="+1 (555) 000-0000"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-[#FF6B1A] transition-colors text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-white/50 text-xs uppercase tracking-widest mb-1.5 block">Order Size</label>
+                      <select
+                        value={form.size}
+                        onChange={(e) => setForm({ ...form, size: e.target.value })}
+                        className="w-full bg-[#1A0800] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#FF6B1A] transition-colors text-sm appearance-none"
+                      >
+                        <option value="">Select case size...</option>
+                        <option value="100">100 packets</option>
+                        <option value="500">500 packets</option>
+                        <option value="1000">1,000 packets</option>
+                        <option value="custom">Custom / Not sure</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-white/50 text-xs uppercase tracking-widest mb-1.5 block">Message</label>
+                    <textarea
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      placeholder="Tell us about your business, flavors needed, frequency..."
+                      rows={3}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-[#FF6B1A] transition-colors text-sm resize-none"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full fire-gradient text-white font-bold py-4 rounded-full text-sm tracking-widest uppercase hover:opacity-90 transition-opacity fire-glow mt-2"
+                  >
+                    Send Quote Request 🔥
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+
+          {/* Trust row */}
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-white/30 text-sm">
+            {["🏭 Made in the USA", "🚚 Fast bulk shipping", "🌿 All natural", "⭐ Trusted by 500+ businesses"].map((b) => (
               <span key={b}>{b}</span>
             ))}
           </div>
@@ -344,7 +447,7 @@ export default function Index() {
       <footer className="border-t border-white/10 py-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <span className="text-2xl animate-flicker">🔥</span>
+            <img src={LOGO_IMAGE} alt="Firesauce" className="h-8 w-8 rounded-full object-cover" />
             <span className="font-display text-xl tracking-widest fire-gradient-text">FIRESAUCE</span>
           </div>
           <p className="text-white/30 text-sm text-center">

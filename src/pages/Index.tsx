@@ -59,7 +59,7 @@ export default function Index() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
         style={{ background: "linear-gradient(to bottom, rgba(15,10,0,0.95) 0%, transparent 100%)" }}>
         <div className="flex items-center gap-2">
-          <img src={LOGO_IMAGE} alt="Firesauce Logo" className="h-10 object-contain" />
+          <img src={LOGO_IMAGE} alt="Firesauce Logo" className="h-10 object-contain mix-blend-screen" />
         </div>
 
         <div className="hidden md:flex items-center gap-8">
@@ -166,12 +166,11 @@ export default function Index() {
 
           <div className="flex-1 flex items-center justify-center opacity-0 animate-rise rise-delay-3">
             <div className="relative">
-              <div className="absolute inset-0 rounded-3xl fire-glow scale-105 blur-2xl opacity-60" />
+              <div className="absolute inset-0 fire-glow scale-105 blur-2xl opacity-40" />
               <img
                 src={SAUCE_IMAGE}
                 alt="Firesauce packet"
-                className="relative z-10 w-80 lg:w-[420px] rounded-3xl object-cover animate-float"
-                style={{ aspectRatio: "1/1" }}
+                className="relative z-10 w-80 lg:w-[420px] object-contain animate-float mix-blend-screen"
               />
               <div className="absolute -top-4 -right-4 z-20 fire-gradient rounded-2xl px-4 py-2 shadow-xl">
                 <span className="font-display text-white text-xl tracking-widest">NEW!</span>
@@ -443,7 +442,7 @@ export default function Index() {
       <footer className="border-t border-white/10 py-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <img src={LOGO_IMAGE} alt="Firesauce" className="h-10 object-contain" />
+            <img src={LOGO_IMAGE} alt="Firesauce" className="h-10 object-contain mix-blend-screen" />
           </div>
           <p className="text-white/30 text-sm text-center">
             © 2026 Firesauce. Ignite every bite.

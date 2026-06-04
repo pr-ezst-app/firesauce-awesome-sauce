@@ -59,7 +59,7 @@ export default function Index() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
         style={{ background: "linear-gradient(to bottom, rgba(15,10,0,0.95) 0%, transparent 100%)" }}>
         <div className="flex items-center gap-2">
-          <img src={LOGO_IMAGE} alt="Firesauce Logo" className="h-12 w-12 object-cover object-center rounded-full overflow-hidden" style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)" }} />
+          <img src={LOGO_IMAGE} alt="Firesauce Logo" className="h-12 object-contain" style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)" }} />
         </div>
 
         <div className="hidden md:flex items-center gap-8">
@@ -170,8 +170,8 @@ export default function Index() {
               <img
                 src={SAUCE_IMAGE}
                 alt="Firesauce packet"
-                className="relative z-10 w-80 lg:w-[420px] object-cover object-left-top animate-float"
-                style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)", aspectRatio: "1/1" }}
+                className="relative z-10 w-80 lg:w-[420px] object-contain animate-float"
+                style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)" }}
               />
               <div className="absolute -top-4 -right-4 z-20 fire-gradient rounded-2xl px-4 py-2 shadow-xl">
                 <span className="font-display text-white text-xl tracking-widest">NEW!</span>
@@ -443,7 +443,7 @@ export default function Index() {
       <footer className="border-t border-white/10 py-12 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <img src={LOGO_IMAGE} alt="Firesauce" className="h-12 w-12 object-cover object-center rounded-full overflow-hidden" style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)" }} />
+            <img src={LOGO_IMAGE} alt="Firesauce" className="h-12 object-contain" style={{ mixBlendMode: "screen", filter: "contrast(1.1) brightness(1.1)" }} />
           </div>
           <p className="text-white/30 text-sm text-center">
             © 2026 Firesauce. Ignite every bite.

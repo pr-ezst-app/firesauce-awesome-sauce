@@ -361,7 +361,6 @@ export default function Index() {
                   <p className="text-white/40 text-sm mt-2">Tell us about your business and we'll handle the rest.</p>
                 </div>
                 <form
-                  ref={formRef}
                   className="space-y-4"
                   onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
                 >
